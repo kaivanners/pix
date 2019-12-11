@@ -2,24 +2,26 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-class Signup extends React.Component {
+class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
             email: "",
             password: "",
-            retypePassword: ""
         }
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(event) {
         const value = event.target.value;
-        const stateName = event.target.name;
+        const stateName = event.target.type;
         this.setState({
             ...this.state,
             [stateName]: value});
+    }
+
+    handleSubmit(event) {
+
     }
 
     validateForm() {
@@ -28,21 +30,11 @@ class Signup extends React.Component {
 
     render() {
         return (
-        <div className="signup">
+        <div className="Login">
             <form onSubmit={this.handleSubmit}>
-            <Form.Group controlId="username">
-                <Form.Control 
-                    type="username"
-                    name="username"
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                    placeholder="username"
-                />
-                </Form.Group>
                 <Form.Group controlId="email">
                 <Form.Control 
                     type="email"
-                    name="email"
                     value={this.state.email}
                     onChange={this.handleChange}
                     placeholder="email"
@@ -51,23 +43,13 @@ class Signup extends React.Component {
                 <Form.Group controlId="password">
                 <Form.Control 
                     type="password"
-                    name="password"
                     value={this.state.password}
                     onChange={this.handleChange}
                     placeholder="password"
                 />
                 </Form.Group>
-                <Form.Group controlId="retypePassword">
-                <Form.Control 
-                    type="password"
-                    name="retypePassword"
-                    value={this.state.retypePassword}
-                    onChange={this.handleChange}
-                    placeholder="re-type password"
-                />
-                </Form.Group>
                 <Button block disabled={!this.validateForm()} type="submit">
-          Sign-up
+          Login
         </Button>
             </form>
         </div>
@@ -77,6 +59,6 @@ class Signup extends React.Component {
     
 }
 
-export default Signup;
+export default Login;
 
 
